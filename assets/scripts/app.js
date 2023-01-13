@@ -9,12 +9,21 @@ const movieList = document.getElementById('movie-list');
 const deleteMovieModal = document.getElementById('delete-modal');
 const movies = [];
 
+const toggleBackDrop = () => {
+  backDrop.classList.toggle('visible');
+};
+
 const updatePage = () => {
   if (movies.length === 0) {
     entryTextSection.style.display = 'block';
   } else {
     entryTextSection.style.display = 'none';
   }
+};
+
+const cancelMovieDeletion = () => {
+  toggleBackDrop();
+  deleteMovieModal.classList.remove('visible');
 };
 
 const deleteMovieHandler = (movieId) => {
@@ -27,18 +36,22 @@ const deleteMovieHandler = (movieId) => {
   }
   movies.splice(movieIndex, 1);
   movieList.children[movieIndex].remove();
-};
-
-const cancelMovieDeletion = () => {
-  toggleBackDrop();
-  deleteMovieModal.classList.remove('visible');
+  cancelMovieDeletion();
+  updatePage();
 };
 
 const startDeleteMovieHandler = (movieId) => {
   deleteMovieModal.classList.add('visible');
   toggleBackDrop();
   const cancelDeletionButton = deleteMovieModal.querySelector('.btn--passive');
-  const confirmDeletionButton = deleteMovieModal.querySelector('.btn--danger');
+  let confirmDeletionButton = deleteMovieModal.querySelector('.btn--danger');
+
+  // had to replace the button and clone it since the event listener was accumulating.
+  confirmDeletionButton.replaceWith(confirmDeletionButton.cloneNode(true));
+
+  confirmDeletionButton = deleteMovieModal.querySelector('.btn--danger');
+  // had to remove the event listener as it was accummulating.
+  cancelDeletionButton.removeEventListener('click', cancelMovieDeletion);
 
   cancelDeletionButton.addEventListener('click', cancelMovieDeletion);
   confirmDeletionButton.addEventListener(
@@ -65,9 +78,6 @@ const renderNewMovieElement = (id, title, imageUrl, rating) => {
   );
   movieList.append(newMovieElement);
 };
-const toggleBackDrop = () => {
-  backDrop.classList.toggle('visible');
-};
 
 const closeMovieModal = () => {
   addMovieModal.classList.remove('visible');
@@ -87,6 +97,7 @@ const clearMovieInput = () => {
 const cancelAddMovieHandler = () => {
   closeMovieModal();
   clearMovieInput();
+  toggleBackDrop();
 };
 
 const addMovieHandler = () => {
@@ -129,7 +140,7 @@ const addMovieHandler = () => {
 const backdropClickHandler = () => {
   closeMovieModal();
   cancelMovieDeletion();
-  // clearMovieInput();
+  clearMovieInput();
 };
 
 addMovieButton.addEventListener('click', showMovieModal);
