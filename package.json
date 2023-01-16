@@ -1,0 +1,23 @@
+{
+  "name": "dom-06-demo-project-setup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FePaiva/movie-list-database.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FePaiva/movie-list-database/issues"
+  },
+  "homepage": "https://github.com/FePaiva/movie-list-database#readme",
+  "dependencies": {
+    "selenium-webdriver": "^4.7.1"
+  }
+}
