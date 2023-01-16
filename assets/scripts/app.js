@@ -7,7 +7,9 @@ const userInputs = addMovieModal.querySelectorAll('input');
 const entryTextSection = document.getElementById('entry-text');
 const movieList = document.getElementById('movie-list');
 const deleteMovieModal = document.getElementById('delete-modal');
-const movies = [];
+// const movies = [];
+
+let movies = JSON.parse(localStorage.getItem('movies')) || [];
 
 const toggleBackDrop = () => {
   backDrop.classList.toggle('visible');
@@ -36,6 +38,7 @@ const deleteMovieHandler = (movieId) => {
   }
   movies.splice(movieIndex, 1);
   movieList.children[movieIndex].remove();
+  localStorage.setItem('movies', JSON.stringify(movies));
   cancelMovieDeletion();
   updatePage();
 };
@@ -112,7 +115,7 @@ const addMovieHandler = () => {
     +ratingValue < 1 ||
     +ratingValue > 5
   ) {
-    alert('Please enter valid values.');
+    alert('Please enter valid values (rating between 1 and 5).');
     return;
   }
 
@@ -124,16 +127,17 @@ const addMovieHandler = () => {
   };
 
   movies.push(newMovie);
-  console.log('movies', movies);
-  closeMovieModal();
-  toggleBackDrop();
-  clearMovieInput();
+  localStorage.setItem('movies', JSON.stringify(movies));
+  console.log('movies', localStorage);
   renderNewMovieElement(
     newMovie.id,
     newMovie.title,
     newMovie.image,
     newMovie.rating
   );
+  closeMovieModal();
+  toggleBackDrop();
+  clearMovieInput();
   updatePage();
 };
 
@@ -142,6 +146,12 @@ const backdropClickHandler = () => {
   cancelMovieDeletion();
   clearMovieInput();
 };
+
+updatePage();
+
+movies.forEach((movie) => {
+  renderNewMovieElement(movie.id, movie.title, movie.image, movie.rating);
+});
 
 addMovieButton.addEventListener('click', showMovieModal);
 backDrop.addEventListener('click', backdropClickHandler);
