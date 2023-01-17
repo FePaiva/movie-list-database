@@ -1,6 +1,6 @@
 # movie-list-database
 
-App to practice javascript and tests with Mocha, Chai and Node. Movie list is stored in localStorage for persistence.
+App to practice javascript and tests with Selenium + Mocha, Chai and Node. Movie list is stored in localStorage for persistence.
 
 ![Front page of app](images/movieListApp.png)
 
