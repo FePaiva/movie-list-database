@@ -1,5 +1,6 @@
 const { Builder, By, Key } = require('selenium-webdriver');
 const assert = require('assert');
+let should = require('chai').should();
 
 const imageOnePiece =
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyklyDoHod9SEqahgN9_dSwv0wyT_KH0oQlg&usqp=CAU';
@@ -34,8 +35,11 @@ async function movieListTest() {
     .then(function (value) {
       return value;
     });
+  // assert using node assertion
+  // assert.strictEqual(addedMovie, 'One Piece');
 
-  assert.strictEqual(addedMovie, 'One Piece');
+  // assert using chai assertion
+  addedMovie.should.equal('One Piece');
 
   // close browser
   await driver.quit();

@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/FePaiva/movie-list-database#readme",
   "dependencies": {
+    "chai": "^4.3.7",
     "selenium-webdriver": "^4.7.1"
   }
 }
