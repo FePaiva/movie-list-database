@@ -1,4 +1,5 @@
 const { Builder, By, Key } = require('selenium-webdriver');
+const assert = require('assert');
 
 const imageOnePiece =
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyklyDoHod9SEqahgN9_dSwv0wyT_KH0oQlg&usqp=CAU';
@@ -24,6 +25,17 @@ async function movieListTest() {
     By.xpath("//button[text()='Add']")
   );
   await confirmAddMovieButton.click();
+
+  // assert
+  // finding the added movie and saving it to the addMovie variable.
+  let addedMovie = await driver
+    .findElement(By.xpath('//*[@id="movie-list"]/li/div[2]/h2'))
+    .getText()
+    .then(function (value) {
+      return value;
+    });
+
+  assert.strictEqual(addedMovie, 'One Piece');
 
   // close browser
   await driver.quit();
