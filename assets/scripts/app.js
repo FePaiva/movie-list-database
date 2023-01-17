@@ -7,7 +7,6 @@ const userInputs = addMovieModal.querySelectorAll('input');
 const entryTextSection = document.getElementById('entry-text');
 const movieList = document.getElementById('movie-list');
 const deleteMovieModal = document.getElementById('delete-modal');
-// const movies = [];
 
 let movies = JSON.parse(localStorage.getItem('movies')) || [];
 

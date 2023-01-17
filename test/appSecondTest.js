@@ -1,5 +1,4 @@
 // test script using mocha and node.
-
 const { Builder, By, Key } = require('selenium-webdriver');
 const assert = require('assert');
 
