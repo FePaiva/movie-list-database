@@ -1,0 +1,139 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-01-17T18:00:46.238Z",
+    "end": "2023-01-17T18:00:50.383Z",
+    "duration": 4145,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "7489f0ad-abe7-4ab3-a138-c4bd7d84c2e1",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "031459c7-5ad0-4865-9114-cb42385f6cec",
+          "title": "Adding another movie to the list",
+          "fullFile": "/Users/felippepaiva/Documents/Udemy/Javascript Guide 2023/dom-06-demo-project-setup/test/appThirdTest.js",
+          "file": "/test/appThirdTest.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should add another movie to the list",
+              "fullTitle": "Adding another movie to the list should add another movie to the list",
+              "timedOut": null,
+              "duration": 3812,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// launch browser\nlet driver = await new Builder().forBrowser('chrome').build();\n// navigate to app\nawait driver.get('http://127.0.0.1:5500/');\n// add a movie to the list\nconst addMovieButton = await driver.findElement(\n  By.xpath(\"//button[text()='ADD MOVIE']\")\n);\nawait addMovieButton.click();\nawait driver.findElement(By.id('title')).sendKeys('One Piece');\nawait driver.findElement(By.name('image-url')).sendKeys(imageOnePiece);\nawait driver.findElement(By.name('rating')).sendKeys('5');\nconst confirmAddMovieButton = await driver.findElement(\n  By.xpath(\"//button[text()='Add']\")\n);\nawait confirmAddMovieButton.click();\n// assert\n// finding the added movie and saving it to the addMovie variable.\nlet addedMovie = await driver\n  .findElement(By.xpath('//*[@id=\"movie-list\"]/li/div[2]/h2'))\n  .getText()\n  .then(function (value) {\n    return value;\n  });\n// assert using node assertion\nassert.strictEqual(addedMovie, 'One Piece');\n// close browser\nawait driver.quit();",
+              "err": {},
+              "uuid": "ad01c885-890a-4c7f-a0de-46b56544046a",
+              "parentUUID": null,
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ad01c885-890a-4c7f-a0de-46b56544046a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3812,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": null
+        },
+        {
+          "uuid": "4f2eaaef-a4f7-4df9-982c-1ff96e6d48c9",
+          "title": "Adding movie to the list",
+          "fullFile": "/Users/felippepaiva/Documents/Udemy/Javascript Guide 2023/dom-06-demo-project-setup/test/appSecondTest.js",
+          "file": "/test/appSecondTest.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should add a movie to the list",
+              "fullTitle": "Adding movie to the list should add a movie to the list",
+              "timedOut": null,
+              "duration": 3892,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// launch browser\nlet driver = await new Builder().forBrowser('chrome').build();\n// navigate to app\nawait driver.get('http://127.0.0.1:5500/');\n// add a movie to the list\nconst addMovieButton = await driver.findElement(\n  By.xpath(\"//button[text()='ADD MOVIE']\")\n);\nawait addMovieButton.click();\nawait driver.findElement(By.id('title')).sendKeys('One Piece');\nawait driver.findElement(By.name('image-url')).sendKeys(imageOnePiece);\nawait driver.findElement(By.name('rating')).sendKeys('5');\nconst confirmAddMovieButton = await driver.findElement(\n  By.xpath(\"//button[text()='Add']\")\n);\nawait confirmAddMovieButton.click();\n// assert\n// finding the added movie and saving it to the addMovie variable.\nlet addedMovie = await driver\n  .findElement(By.xpath('//*[@id=\"movie-list\"]/li/div[2]/h2'))\n  .getText()\n  .then(function (value) {\n    return value;\n  });\n// assert using node assertion\nassert.strictEqual(addedMovie, 'One Piece');\n// close browser\nawait driver.quit();",
+              "err": {},
+              "uuid": "c7260b75-f198-4418-9b1c-e92560170ecb",
+              "parentUUID": null,
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c7260b75-f198-4418-9b1c-e92560170ecb"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3892,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": null
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 0
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
